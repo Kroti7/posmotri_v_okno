@@ -9,13 +9,13 @@ html {
 }
 
 .page {
-  inline-size: 1200px;
-  block-size: 100%;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  inline-size: 1200px;
+  block-size: 100%;
 }
 
 h1,
@@ -36,3 +36,248 @@ ul,
 ol {
   list-style: none;
 }
+
+/* Общие стили */
+
+.title,
+.content__video-card-title {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 711px 400px;
+  grid-template-rows: 534px;
+  column-gap: 30px;
+  width: 1140px;
+  height: 534px;
+}
+
+.button {
+  border: solid 1px white;
+  border-radius: 0;
+  color: white;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.button:active {
+  background: #545050;
+}
+
+.button:hover {
+  text-decoration: underline;
+}
+
+.button:focus-visible {
+  outline: 1px solid white;
+  outline-offset: 1px;
+}
+
+/* Стили основного блока с видео */
+
+.result__video-container {
+  position: relative;
+  margin-top: 78px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-height: 54px;
+}
+
+.search-form__submit-button {
+  width: 194px;
+  height: 34px;
+}
+
+.result__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Стили блоков поиска под видео */
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+} 
+
+.search-form {
+  padding-top: 4px;
+}
+
+.search-form__fieldset {
+  border: none;
+}
+
+.search-form__fieldset-title {
+  font-weight: normal;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.search-form__textfield {
+  width: 255px;
+  border: none;
+  border-top: solid 1px white;
+  border-bottom: solid 1px white;
+  color: white;
+  font-size: 18px;
+  background: transparent;
+}
+
+.search-form__textfield:active {
+  border-right: solid 1px white;
+  border-left: solid 1px white;
+}
+
+.search-form__textfield:focus-visible {
+  outline: solid 1px white;
+  outline-offset: 1px;
+}
+
+.search-form__textfield::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__pseudo-checkbox {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 1px;
+  vertical-align: middle;
+  outline: 1px solid white;
+  outline-offset: 1px;
+  background-color: transparent;
+}
+
+/*Интерактив блока поиска*/
+.search-form__checkbox:checked + .search-form__pseudo-checkbox {
+  background-color: white;
+}
+
+
+.search-form__checkbox:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.search-form__label:has(>.search-form__checkbox:focus-visible) {
+  outline: solid 1px white;
+  outline-offset: 2px;
+}
+
+
+/* Стили бокового блока с поиском видео*/
+
+.title {
+  margin-bottom: 30px;
+  font-size: 75px;
+  line-height: 1;
+}
+
+.content__accent {
+  color: #545050;
+}
+
+.content__details {
+  overflow: auto;
+}
+
+.content__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content__list-item {
+  padding: 0 2px;
+}
+
+.more-button {
+  width: 100%;
+  height: 34px;
+}
+
+/* Стили карточек */
+
+.content__video-card-title {
+  display: inline-block;
+  max-width: 189px;
+  font-size: 30px;
+  /* Фикс, чтобы длинные названия типо "Зеленоградск" не делали в карточке уродск*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content__list-item {
+  max-width: 100%;
+}
+
+.content__card-link {
+  color: white;
+  text-decoration: none;
+}
+
+.content__video-card {
+  display: grid;
+  grid-template-columns: 189px 194px;
+  justify-content: space-between;
+  max-height: 394px;
+}
+
+.content__video-card-title {
+  max-width: 189px;
+  word-break: normal;
+}
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+}
+
+.content__video-card-description {
+  font-size: 18px;
+}
+
+/*Интерактив карточек*/
+.content__card-link:active .content__video-card{
+  background: #545050;
+}
+
+.content__card-link:hover,
+.content__card-link:hover .content__video-card-title {
+  text-decoration: underline;
+}
+
+.content__card-link:focus-visible {
+  outline: solid 1px white;
+}
+
+/* Спасибо за проверку <3 */
+
