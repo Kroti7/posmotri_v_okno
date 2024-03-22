@@ -9,6 +9,10 @@ html {
 }
 
 .page {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: auto;
   color: #fff;
   font-family: 'Fira Sans Condensed', sans-serif;
@@ -43,12 +47,6 @@ ol {
 .content__video-card-title {
   font-family: 'Oswald', sans-serif;
   text-transform: uppercase;
-}
-
-.page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .content {
@@ -87,19 +85,9 @@ ol {
 
 .result__video-container {
   position: relative;
+  width: 711px;
+  height: 386px;
   margin-top: 78px;
-}
-
-.search-form {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  max-height: 54px;
-}
-
-.search-form__submit-button {
-  width: 194px;
-  height: 34px;
 }
 
 .result__video {
@@ -107,6 +95,20 @@ ol {
   height: 100%;
   object-fit: cover;
   object-position: center;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  max-height: 56px;
+  margin-top: 15px;
+}
+
+.search-form__submit-button {
+  width: 194px;
+  height: 34px;
+  margin-bottom: -1px;
 }
 
 /* Стили блоков поиска под видео */
@@ -121,28 +123,28 @@ ol {
   white-space: nowrap;
 } 
 
-.search-form {
-  padding-top: 4px;
-}
-
 .search-form__fieldset {
   border: none;
 }
 
 .search-form__fieldset-title {
+  margin-bottom: 5px;
   font-weight: normal;
   font-size: 18px;
   letter-spacing: 1px;
 }
 
 .search-form__textfield {
-  width: 255px;
-  border: none;
+  width: 225px;
   border-top: solid 1px white;
+  border-right: solid 1px transparent;
   border-bottom: solid 1px white;
-  color: white;
+  border-left: solid 1px transparent;
+  color: inherit;
+  font-family: inherit;
   font-size: 18px;
   background: transparent;
+  appearance: none;
 }
 
 .search-form__textfield:active {
@@ -161,7 +163,13 @@ ol {
 
 .search-form__checkbox-list {
   display: flex;
-  gap: 15px;
+  gap: 18px;
+  margin-bottom: 5px;
+}
+
+.search-form__checkbox-list > .search-form__label {
+  position: relative;
+  cursor: pointer;
 }
 
 .search-form__pseudo-checkbox {
@@ -180,10 +188,21 @@ ol {
   background-color: white;
 }
 
+/*Фикс, поскольку text-decorator: underline
+ не подчеркивал квадрат чекбокса*/
+.search-form__checkbox-list > .search-form__label::before {
+  content: "";
+  position: absolute;
+  width: 105%;
+  height: 100%;
+  margin-top: 2px;
+  margin-left: -2px;
+  border-bottom: solid 1px transparent;
+  background: transparent;
+}
 
-.search-form__checkbox:hover {
-  text-decoration: underline;
-  cursor: pointer;
+.search-form__checkbox-list > .search-form__label:hover::before {
+  border-bottom: solid 1px white;
 }
 
 .search-form__label:has(>.search-form__checkbox:focus-visible) {
@@ -197,13 +216,15 @@ ol {
 .title {
   margin-bottom: 30px;
   font-size: 75px;
-  line-height: 1;
+  line-height: 0.95;
 }
 
 .content__accent {
   color: #545050;
 }
-
+/*В рекомендациях "Можно лучше" 
+про этот overflow:auto говорили?
+А то я не понял (。_。)*/
 .content__details {
   overflow: auto;
 }
@@ -212,15 +233,22 @@ ol {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  min-width: 383px;
+  min-height: 298px;
+  overflow-x: hidden;
 }
 
 .content__list-item {
+  max-width: 100%;
   padding: 0 2px;
 }
 
+.content__list-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
 .more-button {
-  width: 100%;
+  width: 383px;
   height: 34px;
 }
 
@@ -229,19 +257,20 @@ ol {
 .content__video-card-title {
   display: inline-block;
   max-width: 189px;
-  font-size: 30px;
-  /* Фикс, чтобы длинные названия типо "Зеленоградск" не делали в карточке уродск*/
+  max-width: 189px;
   overflow: hidden;
+  font-size: 30px;
   text-overflow: ellipsis;
-}
-
-.content__list-item {
-  max-width: 100%;
+  word-break: normal;
 }
 
 .content__card-link {
   color: white;
   text-decoration: none;
+}
+
+.content__card-link_current .content__video-card {
+  background-color: #545050;
 }
 
 .content__video-card {
@@ -251,18 +280,15 @@ ol {
   max-height: 394px;
 }
 
-.content__video-card-title {
-  max-width: 189px;
-  word-break: normal;
+.content__video-card-description {
+  font-size: 18px;
 }
 
 .content__video-card-thumbnail {
-  width: 194px;
+  width: 193px;
   height: 103px;
-}
-
-.content__video-card-description {
-  font-size: 18px;
+  object-fit: cover;
+  object-position: center;
 }
 
 /*Интерактив карточек*/
@@ -279,5 +305,4 @@ ol {
   outline: solid 1px white;
 }
 
-/* Спасибо за проверку <3 */
-
+/* Спасибо за фидбэк */
