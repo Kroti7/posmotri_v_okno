@@ -9,7 +9,6 @@ html {
 }
 
 .page {
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,7 +50,7 @@ ol {
 
 .content {
   display: grid;
-  grid-template-columns: 711px 400px;
+  grid-template-columns: 711px 440px;
   grid-template-rows: 534px;
   column-gap: 30px;
   width: 1140px;
@@ -63,6 +62,7 @@ ol {
   border-radius: 0;
   color: white;
   font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bold;
   font-size: 18px;
   background: transparent;
   cursor: pointer;
@@ -131,7 +131,6 @@ ol {
   margin-bottom: 5px;
   font-weight: normal;
   font-size: 18px;
-  letter-spacing: 1px;
 }
 
 .search-form__textfield {
@@ -145,16 +144,6 @@ ol {
   font-size: 18px;
   background: transparent;
   appearance: none;
-}
-
-.search-form__textfield:active {
-  border-right: solid 1px white;
-  border-left: solid 1px white;
-}
-
-.search-form__textfield:focus-visible {
-  outline: solid 1px white;
-  outline-offset: 1px;
 }
 
 .search-form__textfield::placeholder {
@@ -184,12 +173,20 @@ ol {
 }
 
 /*Интерактив блока поиска*/
+.search-form__textfield:active {
+  border-right: solid 1px white;
+  border-left: solid 1px white;
+}
+
+.search-form__textfield:focus-visible {
+  outline: solid 1px white;
+  outline-offset: 1px;
+}
+
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
   background-color: white;
 }
 
-/*Фикс, поскольку text-decorator: underline
- не подчеркивал квадрат чекбокса*/
 .search-form__checkbox-list > .search-form__label::before {
   content: "";
   position: absolute;
@@ -207,7 +204,7 @@ ol {
 
 .search-form__label:has(>.search-form__checkbox:focus-visible) {
   outline: solid 1px white;
-  outline-offset: 2px;
+  outline-offset: 1px;
 }
 
 
@@ -222,25 +219,19 @@ ol {
 .content__accent {
   color: #545050;
 }
-/*В рекомендациях "Можно лучше" 
-про этот overflow:auto говорили?
-А то я не понял (。_。)*/
-.content__details {
-  overflow: auto;
-}
 
 .content__list {
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 383px;
-  min-height: 298px;
-  overflow-x: hidden;
+  width: 420px;
+  height: 292px;
+  overflow: auto;
 }
 
 .content__list-item {
-  max-width: 100%;
-  padding: 0 2px;
+  max-width: 98%;
+  margin: 0 3px;
 }
 
 .content__list-item:not(:last-child) {
@@ -248,36 +239,37 @@ ol {
 }
 
 .more-button {
-  width: 383px;
+  width: 98%;
   height: 34px;
+  margin: 2px;
 }
 
 /* Стили карточек */
-
-.content__video-card-title {
-  display: inline-block;
-  max-width: 189px;
-  max-width: 189px;
-  overflow: hidden;
-  font-size: 30px;
-  text-overflow: ellipsis;
-  word-break: normal;
-}
 
 .content__card-link {
   color: white;
   text-decoration: none;
 }
 
+.content__video-card {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  column-gap: auto;
+  max-height: 120px;
+}
+
 .content__card-link_current .content__video-card {
   background-color: #545050;
 }
 
-.content__video-card {
-  display: grid;
-  grid-template-columns: 189px 194px;
-  justify-content: space-between;
-  max-height: 394px;
+
+
+.content__video-card-title {
+  width: 100%;
+  overflow: hidden;
+  font-size: 30px;
+  text-overflow: ellipsis;
+  word-break: normal;
 }
 
 .content__video-card-description {
@@ -285,10 +277,12 @@ ol {
 }
 
 .content__video-card-thumbnail {
-  width: 193px;
-  height: 103px;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+  overflow: hidden;
 }
 
 /*Интерактив карточек*/
@@ -301,8 +295,16 @@ ol {
   text-decoration: underline;
 }
 
-.content__card-link:focus-visible {
-  outline: solid 1px white;
+.content__card-link:focus-visible,
+.content__list-item:has(.content__card-link:focus-visible) {
+  outline-color: #fff;
+  outline-offset: 1px;
+  outline-style: solid;
+  outline-width: 1px;
 }
-
-/* Спасибо за фидбэк */
+/* Прошу обратить внимание на правило выше, очень долго не понимал,
+почему в замечании оставалось "карточки не подчеркиваются" когда у меня все работало.
+Как я примерно догадался спустя пару часов, разные браузеры по разному выделают элементы.
+Сейчас работает и на Firefox, и уже на Edge.
+Я сам до конца не понял точно почему так, 
+если можете подробно объяснить, то буду признателен */
