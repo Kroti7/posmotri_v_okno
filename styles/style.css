@@ -211,7 +211,7 @@ ol {
 /* Стили бокового блока с поиском видео*/
 
 .title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 75px;
   line-height: 0.95;
 }
@@ -225,12 +225,12 @@ ol {
   display: flex;
   flex-direction: column;
   width: 420px;
-  height: 292px;
+  height: 301px;
   overflow: auto;
 }
 
 .content__list-item {
-  max-width: 98%;
+  width: 395px;
   margin: 0 3px;
 }
 
@@ -239,7 +239,7 @@ ol {
 }
 
 .more-button {
-  width: 98%;
+  width: 399px;
   height: 34px;
   margin: 2px;
 }
@@ -252,17 +252,18 @@ ol {
 }
 
 .content__video-card {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  column-gap: auto;
-  max-height: 120px;
+  display: flex;
+  justify-content: space-between;
+  height: 107px;
 }
 
 .content__card-link_current .content__video-card {
   background-color: #545050;
 }
 
-
+.content__video-card-description-container {
+  padding-left: 2px;
+}
 
 .content__video-card-title {
   width: 100%;
@@ -278,8 +279,8 @@ ol {
 
 .content__video-card-thumbnail {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 194px;
+  height: 107px;
   object-fit: cover;
   object-position: center;
   overflow: hidden;
@@ -302,9 +303,3 @@ ol {
   outline-style: solid;
   outline-width: 1px;
 }
-/* Прошу обратить внимание на правило выше, очень долго не понимал,
-почему в замечании оставалось "карточки не подчеркиваются" когда у меня все работало.
-Как я примерно догадался спустя пару часов, разные браузеры по разному выделают элементы.
-Сейчас работает и на Firefox, и уже на Edge.
-Я сам до конца не понял точно почему так, 
-если можете подробно объяснить, то буду признателен */
